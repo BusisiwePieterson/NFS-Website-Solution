@@ -2,6 +2,7 @@
 
 ![image](image/Screenshot_1.png)
 
+## Prepare NFS Server
 
 1. Spin up 4 EC2 Instances 
    - Storage : RHEL linux 8 (NFS Server)
@@ -10,17 +11,32 @@
 
 ![image](image/Screenshot_2.png)
 
+2. Create a 10 Gib Volume then attach it to the NFS Server
+
 ![image](image/Screenshot_3.png)
+
+3. Create a partition on each of the 3 disks
+   - sudo gdisk /dev/xvdf
+   - sudo gdisk /dev/xvdg
+   - sudo gdisk /dev/xvdh
 
 ![image](image/Screenshot_4.png)
 
 ![image](image/Screenshot_5.png)
 
+4. Run `sudo yum install lvm2` to install the LMV2 package. 
+
 ![image](image/Screenshot_6.png)
+
+5. Use `pvcreate` to mark each of the 3 disks as physical volumes to be used by LVM
 
 ![image](image/Screenshot_7.png)
 
+6. Add all 3 PVs to a group called **web-data VG**
+
 ![image](image/Screenshot_8.png)
+
+
 
 
 ![image](image/Screenshot_9.png)
