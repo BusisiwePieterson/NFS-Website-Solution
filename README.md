@@ -36,12 +36,14 @@
 6. Add all 3 PVs to a group called **web-data VG**
    - Run `sudo vgcreate webdata-vg /dev/xvh1 dev/xvdg1 /dev/xvdf1`
    
-   Create mount points on `/mnt` directory for the logical volumes as follow:
-   ```
-   sudo lvcreate -n lv-apps -L 9G webdata-vg
-   sudo lvcreate -n lv-logs -L 9G webdata-vg
-   sudo lvcreate -n lv-opt -L 9G webdata-vg
-   ```
+   **Create 3 Logical Volumes**
+   - `sudo lvcreate -n lv-apps -L 9G webdata-vg`
+
+   - `sudo lvcreate -n lv-logs -L 9G webdata-vg`
+   
+   - `sudo lvcreate -n lv-opt -L 9G webdata-vg`
+
+   **Then Create mount points on `/mnt` directory for the logical volumes as follow:**
 
 ![image](image/Screenshot_8.png)
 
