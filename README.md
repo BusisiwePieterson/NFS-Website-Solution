@@ -30,11 +30,34 @@
 
 5. Use `pvcreate` to mark each of the 3 disks as physical volumes to be used by LVM
 
+
 ![image](image/Screenshot_7.png)
 
 6. Add all 3 PVs to a group called **web-data VG**
+   - Run `sudo vgcreate webdata-vg /dev/xvh1 dev/xvdg1 /dev/xvdf1`
+   
+   Create mount points on `/mnt` directory for the logical volumes as follow:
+   - `sudo lvcreate -n lv-apps -L 9G webdata-vg`
+
+   - `sudo lvcreate -n lv-logs -L 9G webdata-vg`
+   
+   - `sudo lvcreate -n lv-opt -L 9G webdata-vg`
 
 ![image](image/Screenshot_8.png)
+
+
+7. Install the NFS server and configure it to strat on reboot and check that it is running.
+
+  ```
+  sudo yum -y update
+  sudo yum install nfs-utils -y
+  sudo systemctl strat nfs-server.service
+  sudo systemctl enable nfs-server.service
+  sudo systemctl status nfs-server.service
+  
+  ```
+
+![image](image/Screenshot_12.png)
 
 
 
@@ -45,7 +68,6 @@
 
 ![image](image/Screenshot_11.png)
 
-![image](image/Screenshot_12.png)
 
 
 ![image](image/Screenshot_13.png)
