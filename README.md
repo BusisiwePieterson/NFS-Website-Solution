@@ -45,6 +45,10 @@
 
    **Then Create mount points on `/mnt` directory for the logical volumes as follow:**
 
+   - `sudo mkfs -t xfs /dev/webdata-vg/lv-apps`
+   - `sudo mkfs -t xfs /dev/webdata-vg/lv-logs`
+   - `sudo mkfs -t xfs /dev/webdata-vg/lv-opt`
+
 ![image](image/Screenshot_8.png)
 
 
