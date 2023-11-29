@@ -37,11 +37,11 @@
    - Run `sudo vgcreate webdata-vg /dev/xvh1 dev/xvdg1 /dev/xvdf1`
    
    Create mount points on `/mnt` directory for the logical volumes as follow:
-   - `sudo lvcreate -n lv-apps -L 9G webdata-vg`
-
-   - `sudo lvcreate -n lv-logs -L 9G webdata-vg`
-   
-   - `sudo lvcreate -n lv-opt -L 9G webdata-vg`
+   ```
+   sudo lvcreate -n lv-apps -L 9G webdata-vg
+   sudo lvcreate -n lv-logs -L 9G webdata-vg
+   sudo lvcreate -n lv-opt -L 9G webdata-vg
+   ```
 
 ![image](image/Screenshot_8.png)
 
