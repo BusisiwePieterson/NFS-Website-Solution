@@ -2,7 +2,16 @@
 
 ![image](image/Screenshot_1.png)
 
-## Prepare NFS Server
+### What is Network File System (NFS)?
+
+NFS is an Internet Standard, client/server protocol developed to support shared, originally stateless, (file) data access to LAN-attached network storage. As such, NFS enables a client to view, store, and update files on a remote computer as if they were locally stored.
+
+Multiple clients can use the same files, which allows everyone on the network to use the same data, accessing it on remote hosts as if it were acceding local files.
+
+All users can read the same files, so data can remain up-to-date, and it’s consistent and reliable.
+
+## Implementing a business website using NFS
+
 
 Spin up 4 EC2 Instances 
 
@@ -140,9 +149,15 @@ Create a database user and name it `webaccess`
 
 ![image](image/Screenshot_11.png)
 
+Change binding address to accept remote connections (0.0.0.0)
+
+![image](image/Screenshot_34.png)
 
 
-![image](image/Screenshot_13.png)
+## Prepare first webserver
+
+First launch the server and open port 80
+
 
 Install NFS client -  `sudo yum install nfs-utils nfs4-acl-tools -y`
 
@@ -158,14 +173,14 @@ sudo mount -t nfs -o rw,nosuid <NFS-Server-Private-IP-Address>:/mnt/apps /var/ww
 
 ![image](image/Screenshot_19.png)
 
-Make sure that the changes will persist on Web Server after reboot.
+Make sure that the changes will persist on Web Server after reboot by creating mount points.
 
 Open `sudo vi /etc/fstab` and add the line `<NFS-Server-Private-IP-Address>:/mnt/apps /var/www nfs defaults 0 0
 `
 
 ![image](image/Screenshot_20.png)
 
-Install Remi's repo, Apached and PHP
+Install httpd, php and dependencies on webserver1 and configure it.
 
 ```
 sudo yum install httpd -y
@@ -193,41 +208,51 @@ setsebool -P httpd_execmem 1
 
 ![image](image/Screenshot_22.png)
 
-Next, we verify that Apache files and directories are available on the Web Server in `/var/www` nd also on the NFS server in `/mnt/apps`
+Next, we verify that Apache files and directories are available on the Web Server in `/var/www` and also on the NFS server in `/mnt/apps`
 
-Then we create a new file `touch test.txt` to check if the same file is accessible from other Web Servers
+Then we create a new file `touch test.txt` to check if the same file is accessible from other Web Servers.
 
 ![image](image/Screenshot_25.png)
 
 ![image](image/Screenshot_26.png)
 
+Again make sure that the changes will persist on Web Server after reboot, create a new mount point for `/mnt/logs`
+
+Open `sudo vi /etc/fstab` and add the line `<NFS-Server-Private-IP-Address>:/mnt/logs /var/httpd nfs defaults 0 0
+`
+
 ![image](image/Screenshot_27.png)
 
-![image](image/Screenshot_28.png)
+Fork the source code https://github.com/darey-io/tooling then deploy the code to the Webserver ensuring that the **html** folder form the repo is deployed to `/var/www/html`
 
-![image](image/Screenshot_29.png)
+`sudo cp -R html/. /var/www/html` 
 
-![image](image/Screenshot_30.png)
-
-![image](image/Screenshot_31.png)
 
 ![image](image/Screenshot_32.png)
 
+Check permissions to the `/var/www/html` folder then disable SELinux  `sudo setenforce 0` the make the chnage permaently by opening the config file  `sudo vi /etc/sysconfig/selinux` and set to `SELinux=disabled`
+
 ![image](image/Screenshot_33.png)
 
-![image](image/Screenshot_34.png)
+CD into the location of the tooling folder in the server, update the website's configuration to connect to the database in `/var/www/html/functions.php` and apply `tooling-db.sql` script to your database.
 
-![image](image/Screenshot_35.png)
+
+`sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf` is the file location, open it make the changes then restart the server to apply the changes.
 
 ![image](image/Screenshot_36.png)
 
 ![image](image/Screenshot_37.png)
 
-![image](image/Screenshot_38.png)
 
 ![image](image/Screenshot_39.png)
+
+Copy webserver's public ip into the browser which is followed by `/index.php` and log in to the website with the user. Then unencrypt the password.
 
 ![image](image/Screenshot_40.png)
 
 ![image](image/Screenshot_41.png)
+
+Repeat the same for other webservers.
+
+# THE END!!!
 
