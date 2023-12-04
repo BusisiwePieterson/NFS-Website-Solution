@@ -15,9 +15,9 @@ All users can read the same files, so data can remain up-to-date, and it’s con
 
 Spin up 4 EC2 Instances 
 
-   - Storage : RHEL linux 8 (NFS Server)
-   - 2 Webservers : RHEL linux 8
-   - Database Server : Ubuntu 20.04 (MySQL Database)
+   - Storage: RHEL-8.6.0_HVM-20220503-x86_64-2-Hourly2-GP2 (NFS Server)
+   - 2 Webservers : RHEL-8.6.0_HVM-20220503-x86_64-2-Hourly2-GP2
+   - Database Server: Ubuntu 20.04 (MySQL Database)
 
 ![image](image/Screenshot_2.png)
 
