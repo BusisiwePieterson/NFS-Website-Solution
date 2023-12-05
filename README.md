@@ -249,7 +249,7 @@ CD into the location of the tooling folder in the server, update the website's c
 
 ![image](image/Screenshot_37.png)
 
-On the Webserver first install mysql  `sudo yum install mysql -y` then run the following:
+On the Webserver first, install MySQL  `sudo yum install mysql -y` then run the following, using database private IP:
 
 
 ![image](Screenshot_11.png)
