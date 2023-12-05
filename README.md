@@ -246,12 +246,11 @@ Check permissions to the `/var/www/html` folder then disable SELinux  `sudo sete
 
 CD into the location of the tooling folder in the server, update the website's configuration to connect to the database in `sudo vi /var/www/html/functions.php` and edit, use the database private IP address.
 
-On the Webserver Run `sudo yum install mysql -y`
-
 
 ![image](image/Screenshot_37.png)
 
-On the webserver run the following:
+On the Webserver first install mysql  `sudo yum install mysql -y` then run the following:
+
 
 ![image](Screenshot_11.png)
 
