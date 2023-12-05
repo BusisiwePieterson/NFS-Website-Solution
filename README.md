@@ -251,10 +251,14 @@ On the Webserver Run `sudo yum install mysql -y`
 
 ![image](image/Screenshot_37.png)
 
+On the webserver run the following:
+
+![image](Screenshot_11.png)
+
 
 ![image](image/Screenshot_39.png)
 
-![image](Screenshot_11.png)
+
 
 Copy the webserver's public IP into the browser which is followed by `/index.php` and log in to the website with the user. Then unencrypt the password.
 
