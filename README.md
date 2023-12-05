@@ -69,7 +69,7 @@ Install the NFS server and configure it to start on reboot and check that it is 
   ```
   sudo yum -y update
   sudo yum install nfs-utils -y
-  sudo systemctl strat nfs-server.service
+  sudo systemctl start nfs-server.service
   sudo systemctl enable nfs-server.service
   sudo systemctl status nfs-server.service
   
@@ -79,7 +79,7 @@ Install the NFS server and configure it to start on reboot and check that it is 
 
 
 
-Set up pemissions that will allow the Web servers to read, write and execute files on NFS.
+Set up permissions that will allow the Web servers to read, write, and execute files on NFS.
 
 ```
 sudo chown -R nobody: /mnt/apps
@@ -94,7 +94,7 @@ sudo systemctl restart nfs-server.service
 
 ```
 
-![image](image/Screenshot_14.png)
+![image](Screenshot_10.png)
 
 Configure access to NFS within the same subnet
 
@@ -120,7 +120,7 @@ Check which port is used by NFS and open it using SG Inbound Rules.
 
 ![image](image/Screenshot_16.png)
 
-Open the following ports: **TCP 111, UDP 111, UDP 2049, TCP 2049** for NFS server to be accessible from your client.
+Open the following ports: **TCP 111, UDP 111, UDP 2049, TCP 2049** for the NFS server to be accessible from your client.
 
 ![image](image/Screenshot_17.png)
 
@@ -156,7 +156,7 @@ Change binding address to accept remote connections (0.0.0.0)
 ![image](image/Screenshot_34.png)
 
 
-## Prepare first webserver
+## Prepare first web server
 
 First launch the server and open port 80
 
@@ -165,7 +165,7 @@ Install NFS client -  `sudo yum install nfs-utils nfs4-acl-tools -y`
 
 ![image](image/Screenshot_18.png)
 
-Mount `/var/www/` and traget the NFS server's export for apps
+Mount `/var/www/` and target the NFS server's export for apps
 
 ```
 sudo mkdir /var/www
@@ -175,14 +175,14 @@ sudo mount -t nfs -o rw,nosuid <NFS-Server-Private-IP-Address>:/mnt/apps /var/ww
 
 ![image](image/Screenshot_19.png)
 
-Make sure that the changes will persist on Web Server after reboot by creating mount points.
+Make sure that the changes will persist on the Web Server after reboot by creating mount points.
 
 Open `sudo vi /etc/fstab` and add the line `<NFS-Server-Private-IP-Address>:/mnt/apps /var/www nfs defaults 0 0
 `
 
 ![image](image/Screenshot_20.png)
 
-Install httpd, php and dependencies on webserver1 and configure it.
+Install httpd, php, and dependencies on webserver1 and configure it.
 
 ```
 sudo yum install httpd -y
