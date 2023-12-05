@@ -2,7 +2,7 @@
 
 ![image](image/Screenshot_1.png)
 
-### What is Network File System (NFS)?
+### What is a Network File System (NFS)?
 
 NFS is an Internet Standard, client/server protocol developed to support shared, originally stateless, (file) data access to LAN-attached network storage. As such, NFS enables a client to view, store, and update files on a remote computer as if they were locally stored.
 
@@ -16,7 +16,7 @@ All users can read the same files, so data can remain up-to-date, and it’s con
 Spin up 4 EC2 Instances 
 
    - Storage: RHEL-8.6.0_HVM-20220503-x86_64-2-Hourly2-GP2 (NFS Server)
-   - 2 Webservers : RHEL-8.6.0_HVM-20220503-x86_64-2-Hourly2-GP2
+   - 2 Webservers: RHEL-8.6.0_HVM-20220503-x86_64-2-Hourly2-GP2
    - Database Server: Ubuntu 20.04 (MySQL Database)
 
 ![image](image/Screenshot_2.png)
@@ -124,9 +124,9 @@ Open the following ports: **TCP 111, UDP 111, UDP 2049, TCP 2049** for the NFS s
 
 ![image](image/Screenshot_17.png)
 
-## Configure backend database as part of 3 tier architecture
+## Configure backend database as part of 3-tier architecture
 
-Launch a database server, ssh into it and install MySQL server. 
+Launch a database server, ssh into it, and install MySQL server. 
   
   ```
   sudo apt upgrade
@@ -204,6 +204,13 @@ sudo systemctl enable php-fpm
 
 setsebool -P httpd_execmem 1
 
+
+```
+
+Then start the httpd
+```
+sudo systemctl start httpd
+sudo systemctl status httpd
 
 ```
 
