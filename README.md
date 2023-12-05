@@ -61,6 +61,8 @@ Add all 3 PVs to a group called **web-data VG**
 
 ![image](image/Screenshot_8.png)
 
+![image](Screenshot_8.png)
+
 
 Install the NFS server and configure it to start on reboot and check that it is running.
 
