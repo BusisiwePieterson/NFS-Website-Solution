@@ -152,6 +152,7 @@ Create a database user and name it `webaccess`
 ![image](image/Screenshot_11.png)
 
 Change binding address to accept remote connections (0.0.0.0)
+Run `sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf`
 
 ![image](image/Screenshot_34.png)
 
