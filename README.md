@@ -130,7 +130,7 @@ Launch a database server, ssh into it and install MySQL server.
   
   ```
   sudo apt upgrade
-  sudo apt install mysl-server -y
+  sudo apt install mysql-server -y
   
   ```
 
