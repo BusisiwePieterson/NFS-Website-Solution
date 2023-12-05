@@ -248,14 +248,13 @@ CD into the location of the tooling folder in the server, update the website's c
 
 On the Webserver Run `sudo yum install mysql -y`
 
-Restart the server MySQL Database 
-
-![image](image/Screenshot_36.png)
 
 ![image](image/Screenshot_37.png)
 
 
 ![image](image/Screenshot_39.png)
+
+![image](Screenshot_11.png)
 
 Copy the webserver's public IP into the browser which is followed by `/index.php` and log in to the website with the user. Then unencrypt the password.
 
