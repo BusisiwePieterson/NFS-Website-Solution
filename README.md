@@ -226,25 +226,27 @@ Then we create a new file `touch test.txt` to check if the same file is accessib
 
 ![image](image/Screenshot_26.png)
 
-Again make sure that the changes will persist on Web Server after reboot, create a new mount point for `/mnt/logs`
+Again make sure that the changes will persist on the Web Server after reboot, and create a new mount point for `/mnt/logs`
 
 Open `sudo vi /etc/fstab` and add the line `<NFS-Server-Private-IP-Address>:/mnt/logs /var/httpd nfs defaults 0 0
 `
 
 ![image](image/Screenshot_27.png)
 
-Fork the source code https://github.com/darey-io/tooling then deploy the code to the Webserver ensuring that the **html** folder form the repo is deployed to `/var/www/html`
+Fork the source code https://github.com/darey-io/tooling then deploy the code to the Webserver ensuring that the **html** folder from the repo is deployed to `/var/www/html`
 
 `sudo cp -R html/. /var/www/html` 
 
 
 ![image](image/Screenshot_32.png)
 
-Check permissions to the `/var/www/html` folder then disable SELinux  `sudo setenforce 0` the make the chnage permaently by opening the config file  `sudo vi /etc/sysconfig/selinux` and set to `SELinux=disabled`
+Check permissions to the `/var/www/html` folder then disable SELinux  `sudo setenforce 0` the make the change permanent by opening the config file  `sudo vi /etc/sysconfig/selinux` and set to `SELinux=disabled`
 
 ![image](image/Screenshot_33.png)
 
-CD into the location of the tooling folder in the server, update the website's configuration to connect to the database in `sudo vi /var/www/html/functions.php` and edit, use the database private ip address.
+CD into the location of the tooling folder in the server, update the website's configuration to connect to the database in `sudo vi /var/www/html/functions.php` and edit, use the database private IP address.
+
+On the Webserver Run `sudo yum install mysql -y`
 
 Restart the server MySQL Database 
 
@@ -255,7 +257,7 @@ Restart the server MySQL Database
 
 ![image](image/Screenshot_39.png)
 
-Copy webserver's public ip into the browser which is followed by `/index.php` and log in to the website with the user. Then unencrypt the password.
+Copy the webserver's public IP into the browser which is followed by `/index.php` and log in to the website with the user. Then unencrypt the password.
 
 ![image](image/Screenshot_40.png)
 
