@@ -244,10 +244,9 @@ Check permissions to the `/var/www/html` folder then disable SELinux  `sudo sete
 
 ![image](image/Screenshot_33.png)
 
-CD into the location of the tooling folder in the server, update the website's configuration to connect to the database in `/var/www/html/functions.php` and apply `tooling-db.sql` script to your database.
+CD into the location of the tooling folder in the server, update the website's configuration to connect to the database in `cd /var/www/html/` then `vi functions.php` and apply `tooling-db.sql` script to your database.
 
-
-`sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf` is the file location, open it make the changes then restart the server to apply the changes.
+Restart the server
 
 ![image](image/Screenshot_36.png)
 
