@@ -240,14 +240,14 @@ Fork the source code https://github.com/darey-io/tooling then deploy the code to
 
 ![image](image/Screenshot_32.png)
 
-Check permissions to the `/var/www/html` folder then disable SELinux  `sudo setenforce 0` the make the change permanent by opening the config file  `sudo vi /etc/sysconfig/selinux` and set to `SELinux=disabled`
+Check permissions to the `/var/www/html` folder then disable SELinux  `sudo setenforce 0` the make the change permanent by opening the config file  `sudo vi /etc/sysconfig/selinux` and set it to `SELinux=disabled`
 
 ![image](image/Screenshot_33.png)
 
 CD into the location of the tooling folder in the server, update the website's configuration to connect to the database in `sudo vi /var/www/html/functions.php` and edit, use the database private IP address.
 
-
 ![image](image/Screenshot_37.png)
+
 
 On the Webserver first, install MySQL  `sudo yum install mysql -y` then run the following, using database private IP:
 
@@ -263,7 +263,12 @@ Copy the webserver's public IP into the browser which is followed by `/index.php
 
 ![image](image/Screenshot_40.png)
 
+Webserver 1
+
 ![image](image/Screenshot_41.png)
+
+Webserver 2
+![image](Screenshot_12.png)
 
 Repeat the same for other webservers.
 
