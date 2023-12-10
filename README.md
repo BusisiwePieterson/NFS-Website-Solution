@@ -10,7 +10,7 @@ Multiple clients can use the same files, which allows everyone on the network to
 
 All users can read the same files, so data can remain up-to-date, and it’s consistent and reliable.
 
-## Implementing a business website using NFS
+## Implementing a business website using NFS.
 
 
 Start by spinning up 4 EC2 Instances 
