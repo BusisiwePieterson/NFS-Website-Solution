@@ -1,4 +1,8 @@
-# NFS 3-TIER ARCHITECTURE
+# PROJECT 3-TIER ARCHITECTURE
+
+![image](NGINX_ARCHICTECTURE.png)
+
+# NFS ARCHITECTURE
 
 ![image](image/Screenshot_1.png)
 
